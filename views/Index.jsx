@@ -1,20 +1,19 @@
-// import React from 'react'
+import React from 'react'
 
-// function Index(props) {
-//     return(
-//         <div style={myStyle}>
-//             <h1>See All Pokemon</h1>
-//             <ul>
-//                 {props.pokemon.map((poke, index) =>
-//                 <li key={index}>
-//                     <p>{poke.name.chartAt[0].toUpperCase()+poke.name.slice[1]}</p>
-//                     <a href={`/pokemon/${index}`}>Click here for Pokemon Stat</a>
-//                 </li>
+function Index(props) {
+    return(
+        <div>
+            <h1>See All Pokemon</h1>
+            <ul>
+                {props.pokemons.map((poke, index) =>
+                <li key={index}>
+                    <a href={`/pokemon/${poke._id}`}> {poke.name.charAt(0).toUpperCase() + poke.name.slice(1)} </a>
+                </li>
 
-//                 )}
-//             </ul>
-//         </div>
-//     )
-// }
+                )}
+            </ul>
+        </div>
+    )
+}
 
-// export default Index
+export default Index

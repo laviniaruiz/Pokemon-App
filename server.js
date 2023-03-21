@@ -32,16 +32,26 @@ app.get('/', (req, res) => {
 
 app.get('/pokemon', async (req, res) => {
     const pokemons = await Pokemon.find()
-    res.render("./index", pokemons)
+    res.render("./index", {pokemons: pokemons})
 })
 
 app.get('/pokemon/new', (req, res) => {
     res.render('./New')
 })
 
-app.post('/', async (req, res) => {
+app.get('/pokemon/:id', async (req, res) => {
+    try {
+        const pokemon = await Pokemon.findById(req.params.id)
+        res.render('./Show', { pokemon: pokemon})
+    } catch(err) {
+        console.log(err.message)
+    }
+})
+
+app.post('/pokemon', async (req, res) => {
     try{
         const result = await Pokemon.create(req.body)
+        console.log(result)
     } catch (err) {
         res.send(err.message)
     }
